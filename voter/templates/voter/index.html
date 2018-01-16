@@ -1,0 +1,9 @@
+<html>
+
+<h1>Welcome to my Application</h1>
+
+{% for show in shows%}
+<h3><a href = "{%url 'show' show.id%}">{{show.name}}</a></h3>
+{% endfor %}
+
+</html>

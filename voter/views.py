@@ -2,8 +2,9 @@
 views are where you create things to be seen
 """
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .models import Show
 # Create your views here.
 
 
@@ -11,4 +12,9 @@ def index(request):
     """
     returns what to show in browser when someone goes to request
     """
-    return HttpResponse("hello")
+    shows = Show.objects.all()
+    return render(request, "voter/index.html", {"shows": shows})
+
+def show(request, show_id):
+    show = get_object_or_404(Show, id = show_id)
+    return render(request, "voter/show.html", {"show": show})
