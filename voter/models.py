@@ -37,8 +37,41 @@ class Episode(models.Model):
     length = models.DurationField()
     name = models.CharField(max_length = 100)
     season = models.ForeignKey(Season, on_delete = models.CASCADE)
-    winning_contestant = models.ForeignKey(Contestant, blank = True, null = True, related_name = "winning_episodes")
-    loosing_contestant = models.ForeignKey(Contestant, blank = True, null = True, related_name = "loosing_episodes")
+    winning_contestant = models.ForeignKey(Contestant,
+                                           blank = True,
+                                           null = True,
+                                           related_name = "winning_episodes",
+                                           on_delete = models.CASCADE)
+    loosing_contestant = models.ForeignKey(Contestant,
+                                           blank = True,
+                                           null = True,
+                                           related_name = "loosing_episodes",
+                                           on_delete = models.CASCADE)
 
     def __str__(self):
         return self.name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    pass
