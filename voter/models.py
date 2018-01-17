@@ -10,12 +10,16 @@ class Show(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def current_season(self):
+        return self.seasons.order_by("number").last()
+
 
 class Season(models.Model):
 
     number = models.IntegerField()
     airdate = models.DateTimeField()
-    show = models.ForeignKey(Show, on_delete = models.CASCADE)
+    show = models.ForeignKey(Show, on_delete = models.CASCADE, related_name = "seasons")
 
     def __str__(self):
         return f"season {self.number} of {self.show.name}"

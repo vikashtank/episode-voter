@@ -1,5 +1,6 @@
 from django.test import TestCase
-from .models import Show
+from .models import Show, Season
+from django.utils import timezone
 # Create your tests here. NEVERRRRR
 
 class TestView(TestCase):
@@ -30,3 +31,20 @@ class TestView(TestCase):
 
         response = self.client.get("/voter/0")
         self.assertEquals(response.status_code, 404)
+
+class TestModel(TestCase):
+
+    def setUp(self):
+        self.show_1 = Show.objects.create(name = "RPDR")
+        Season.objects.create(number = 1,
+                             airdate = timezone.now(),
+                             show = self.show_1)
+        Season.objects.create(number = 10,
+                             airdate = timezone.now(),
+                             show = self.show_1)
+        Season.objects.create(number = 3,
+                             airdate = timezone.now(),
+                             show = self.show_1)
+
+    def test_current_season(self):
+        self.assertEqual(self.show_1.current_season.number, 10)
