@@ -8,13 +8,13 @@ class TestView(TestCase):
         self.show_1 = Show.objects.create(name = "BB")
         self.show_2 = Show.objects.create(name = "RPDR ALL STARS")
 
-    def test_index_includes_show(self):
+    def test_index_links_to_show(self):
         """
         when the index page is accessed, we get all shows displayed
         """
         response = self.client.get("/voter/")
-        self.assertContains(response, "BB")
-        self.assertContains(response, "RPDR ALL STARS")
+        self.assertContains(response, "<a href = \"/voter/1\">BB</a>")
+        self.assertContains(response, "<a href = \"/voter/2\">RPDR ALL STARS</a>")
 
     def test_show_includes_show_1(self):
         response = self.client.get("/voter/1")
