@@ -1,6 +1,7 @@
 from django.test import TestCase
-from .models import Show, Season
+from .models import Show, Season, Episode
 from django.utils import timezone
+from datetime import timedelta
 # Create your tests here. NEVERRRRR
 
 class TestView(TestCase):
@@ -39,12 +40,27 @@ class TestModel(TestCase):
         Season.objects.create(number = 1,
                              airdate = timezone.now(),
                              show = self.show_1)
-        Season.objects.create(number = 10,
+        self.latest_season = Season.objects.create(number = 10,
                              airdate = timezone.now(),
                              show = self.show_1)
         Season.objects.create(number = 3,
                              airdate = timezone.now(),
                              show = self.show_1)
+        self.time = timezone.now()
+
+        for i in range(100, 0, -1):
+            Episode.objects.create(length = timedelta(hours = i),
+                                   name  = str(i),
+                                   airdate = self.time + timedelta(hours = i),
+                                   season = self.latest_season)
 
     def test_current_season(self):
         self.assertEqual(self.show_1.current_season.number, 10)
+
+
+    def test_season_ordered_episodes(self):
+        for i, episode in enumerate(self.latest_season.ordered_episodes.all()):
+            i = i + 1
+            self.assertEqual(episode.length, timedelta(hours = i))
+            self.assertEqual(episode.name, str(i))
+            self.assertEqual(episode.airdate, self.time + timedelta(hours = i))

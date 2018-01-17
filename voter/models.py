@@ -24,6 +24,10 @@ class Season(models.Model):
     def __str__(self):
         return f"season {self.number} of {self.show.name}"
 
+    @property
+    def ordered_episodes(self):
+        return self.episodes.order_by("airdate")
+
 
 class Contestant(models.Model):
 
@@ -40,7 +44,8 @@ class Episode(models.Model):
 
     length = models.DurationField()
     name = models.CharField(max_length = 100)
-    season = models.ForeignKey(Season, on_delete = models.CASCADE)
+    airdate = models.DateTimeField()
+    season = models.ForeignKey(Season, on_delete = models.CASCADE, related_name = "episodes")
     winning_contestant = models.ForeignKey(Contestant,
                                            blank = True,
                                            null = True,
