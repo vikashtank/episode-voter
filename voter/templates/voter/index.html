@@ -1,9 +1,17 @@
+{% load staticfiles %}
 <html>
+    <head>
+        <link href = "{% static "css/voter.css" %}" rel = "stylesheet">
+    </head>
 
-<h1>Welcome to my Application</h1>
+    <body>
 
-{% for show in shows%}
-<h3><a href = "{%url 'show' show.id%}">{{show.name}}</a></h3>
-{% endfor %}
+        <h1>Voter-y-able</h1>
+
+        {% for show in shows%}
+        <h3><a href = "{%url 'show' show.id%}">{{show.name}}</a></h3>
+        {% endfor %}
+
+    </body>
 
 </html>
