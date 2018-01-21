@@ -1,9 +1,15 @@
 body{
-    background-color: pink;
+    background-color: Snow;
 }
-a{
-    color: grey;
+.title-block{
+    padding: 0px;
+    background-color: Orange;
+    color: white
 }
-h1{
-    background-color: yellow;
+.title-block h1{
+    padding: 30px;
+    padding-left: 50px;
+}
+.content{
+    padding: 50px;
 }
