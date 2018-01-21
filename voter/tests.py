@@ -15,8 +15,8 @@ class TestView(TestCase):
         when the index page is accessed, we get all shows displayed
         """
         response = self.client.get("/voter/")
-        self.assertContains(response, "<a href = \"/voter/1\">BB</a>")
-        self.assertContains(response, "<a href = \"/voter/2\">RPDR ALL STARS</a>")
+        self.assertContains(response, "<a href=\"/voter/1\" class=\"btn btn-primary\">Vote now!</a>")
+        self.assertContains(response, "<a href=\"/voter/2\" class=\"btn btn-primary\">Vote now!</a>")
 
     def test_show_includes_show_1(self):
         response = self.client.get("/voter/1")
