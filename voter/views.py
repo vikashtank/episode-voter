@@ -13,7 +13,7 @@ def index(request):
     returns what to show in browser when someone goes to request
     """
     shows = Show.objects.all()
-    return render(request, "voter/index.html", {"shows": shows})
+    return render(request, "voter/home.html", {"shows": shows})
 
 def show(request, show_id):
     show = get_object_or_404(Show, id = show_id)

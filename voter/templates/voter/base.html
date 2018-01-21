@@ -1,0 +1,19 @@
+<!doctype html>
+{% load static %}
+<html>
+    <head>
+        {% include "voter/includes/bootcamp_statics.html" %}
+        <link href = "{% static "css/voter.css" %}" rel = "stylesheet">
+    </head>
+
+    <body>
+
+        <header class="title-block">
+            <h1>Voterr-y-able</h1>
+        </header>
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+
+</html>

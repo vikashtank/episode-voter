@@ -1,0 +1,17 @@
+{% extends "voter/base.html" %}
+
+{% block content %}
+
+<div class="card-columns">
+    {% for show in shows%}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ show.name }}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{% url 'show' show.id %}" class="btn btn-primary">Vote now!</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
