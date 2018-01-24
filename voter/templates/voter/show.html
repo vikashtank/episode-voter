@@ -2,7 +2,10 @@
 
 
 {% block content %}
-<h1> HEY THIS IS A VIEW </h1>
+<h1> {{show.name}} </h1>
 
-<h3>{{show.name}}</h3>
+{% for season in show.seasons.all %}
+    <h1>{{season.number}}</h1>
+{% endfor %}
+
 {% endblock %}

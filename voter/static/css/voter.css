@@ -1,14 +1,16 @@
 body{
     background-color: Snow;
 }
-.title-block{
-    padding: 0px;
+.bg-orange{
     background-color: Orange;
-    color: white
 }
-.title-block h1{
-    padding: 30px;
-    padding-left: 50px;
+.navbar{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.navbar .icon{
+    font-size: 1.5rem;
+    color: white;
 }
 .content{
     padding: 50px;

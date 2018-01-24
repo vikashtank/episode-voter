@@ -4,12 +4,13 @@
     <head>
         {% include "voter/includes/bootcamp_statics.html" %}
         <link href = "{% static "css/voter.css" %}" rel = "stylesheet">
+        <link href = "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel = "stylesheet">
     </head>
 
     <body>
 
-        <header class="title-block">
-            <h1>Voterr-y-able</h1>
+        <header>
+            {% include "voter/includes/navbar.html" %}
         </header>
         <main class="content">
             {% block content %}{% endblock %}
